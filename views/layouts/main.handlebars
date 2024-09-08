@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <title>Tech Blog</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#" id="home">Home</a></li>
+          <li><a href="#" id="dashboard">Dashboard</a></li>
+          {{#if loggedIn}}
+            <li><a href="#" id="logout">Logout</a></li>
+          {{else}}
+            <li><a href="#" id="login">Login</a></li>
+          {{/if}}
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      {{{body}}}
+    </main>
+
+    <script src="/public/js/homepage.js"></script>
+    <script src="/public/js/login.js"></script>
+    <script src="/public/js/signup.js"></script>
+    <script src="/public/js/blog.js"></script>
+    <script src="/public/js/dashboard.js"></script>
+    <script src="/public/js/new-blog.js"></script>
+    <script src="/public/js/edit-blog.js"></script>
+  </body>
+</html>

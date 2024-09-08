@@ -1,0 +1,114 @@
+body {
+  background-color: #e6f2e6;
+  font-family: Arial, sans-serif;
+}
+
+nav {
+  background-color: #2d211e;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.container {
+  margin: 50px auto;
+  width: 50%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 2px solid #3e3e3e;
+}
+
+.container h1 {
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #d9efd9;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  border: 2px solid #333;
+}
+
+.card h2 {
+  background-color: #3a2d2b;
+  color: #eef8e6;
+  padding: 10px;
+  margin: 0 -20px 10px -20px;
+  border-bottom: 2px solid #333;
+}
+
+.card p {
+  margin: 10px 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input {
+  width: calc(100% - 16px);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+input[type="text"],
+textarea {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button-container {
+  text-align: center;
+}
+
+button {
+  background-color: #555;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #777;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 15px;
+  color: #3574d4;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.new-post-button {
+  background-color: #555;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}

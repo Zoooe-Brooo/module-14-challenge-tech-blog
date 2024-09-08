@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Your Dashboard</h1>
+
+  {{#each blogs as |blog|}}
+    <div class="blog">
+      <a href="/blog/{{blog.id}}" class="blog-item">
+        <h2>{{blog.title}}</h2>
+        <p>{{format_date blog.date_created}}</p>
+      </a>
+    </div>
+  {{/each}}
+
+  <div>
+    <button id="new-post">+ New Post</button>
+  </div>
+
+</div>

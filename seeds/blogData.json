@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Frontend Development",
+    "content": "A blog about frontend development and the latest technologies."
+  },
+  {
+    "title": "Backend Development",
+    "content": "A blog about backend development and the latest technologies."
+  },
+  {
+    "title": "Fullstack Development",
+    "content": "A blog about fullstack development and the latest technologies."
+  }
+]
