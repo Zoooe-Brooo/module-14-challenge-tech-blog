@@ -2,19 +2,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../public/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Tech Blog</title>
   </head>
   <body>
     <header>
       <nav>
         <ul>
-          <li><a href="#" id="home">Home</a></li>
-          <li><a href="#" id="dashboard">Dashboard</a></li>
+          <li><a href="/" id="home">Home</a></li>
+          <li><a href="/user/:id" id="dashboard">Dashboard</a></li>
           {{#if loggedIn}}
-            <li><a href="#" id="logout">Logout</a></li>
+            <li><a href="/" id="logout">Logout</a></li>
           {{else}}
-            <li><a href="#" id="login">Login</a></li>
+            <li><a href="/login" id="login">Login</a></li>
           {{/if}}
         </ul>
       </nav>
