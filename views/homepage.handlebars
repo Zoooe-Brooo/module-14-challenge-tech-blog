@@ -1,24 +1,23 @@
-<div class="container">
+<div>
   <h1>The Tech Blog</h1>
-
-  {{#each blogs as |blog|}}
-    <section class="card">
-      <a href="/blog/{{blog.id}}">
-        <div>
-          <h2>{{blog.title}}</h2>
-          <p>Posted by
-            {{blog.user.username}}
-            on
-            {{format_date blog.date_created}}
-          </p>
-        </div>
-        <div>
-          <p>
-            {{blog.content}}
-          </p>
-        </div>
-      </a>
-    </section>
-  {{/each}}
-
 </div>
+
+{{#each blogs as |blog|}}
+  <section class="card">
+    <a href="/blog/{{blog.id}}">
+      <div>
+        <h2>{{blog.title}}</h2>
+        <h3>Posted by
+          {{blog.user.username}}
+          on
+          {{format_date blog.date_created}}
+        <h3>
+      </div>
+      <div>
+        <p>
+          {{blog.content}}
+        </p>
+      </div>
+    </a>
+  </section>
+{{/each}}

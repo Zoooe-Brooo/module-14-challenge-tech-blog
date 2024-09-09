@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/userDashboard");
+    res.redirect("/user/" + req.session.user_id);
     return;
   }
 
@@ -34,7 +34,8 @@ router.get("/login", (req, res) => {
 
 router.get("/signup", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/userDashboard");
+    const user_id = req.session.user_id;
+    res.redirect("/user/" + user_id);
     return;
   }
 

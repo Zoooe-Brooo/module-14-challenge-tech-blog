@@ -7,8 +7,8 @@ const signup = document.querySelector("#signup");
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
-  let username = loginName.value.trim();
-  let password = loginPassword.value.trim();
+  const username = loginName.value.trim();
+  const password = loginPassword.value.trim();
 
   if (username && password) {
     const response = await fetch("/api/user/login", {
@@ -18,7 +18,8 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/user/response.user_id");
+      const user = await response.json();
+      document.location.replace("/user/" + user.user.id);
     } else {
       alert("Failed to log in.");
     }

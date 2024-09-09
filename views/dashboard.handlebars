@@ -1,17 +1,16 @@
-<div class="container">
+<div>
   <h1>Your Dashboard</h1>
+</div>
 
-  {{#each blogs as |blog|}}
-    <div class="blog">
-      <a href="/blog/{{blog.id}}" class="blog-item">
-        <h2>{{blog.title}}</h2>
-        <p>{{format_date blog.date_created}}</p>
-      </a>
-    </div>
-  {{/each}}
-
-  <div>
-    <button id="new-post">+ New Post</button>
+{{#each blogs as |blog|}}
+  <div class="card">
+    <a href="/blog/{{blog.id}}" class="blog-item">
+      <p>{{blog.title}}</p>
+      <p>{{format_date blog.date_created}}</p>
+    </a>
   </div>
+{{/each}}
 
+<div>
+  <button id="new-post">+ New Post</button>
 </div>

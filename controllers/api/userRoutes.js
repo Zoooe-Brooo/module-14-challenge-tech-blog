@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Blog, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-router.post("/", async (req, res) => {
+router.post("/signup", async (req, res) => {
   try {
     const newUser = await User.create(req.body);
 
@@ -39,10 +39,16 @@ router.post("/login", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.json({ user: userData, message: "You are now logged in!" });
+      res.json({
+        user: { id: userData.id, username: userData.username },
+        message: "You are now logged in!",
+      });
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.error(err);
+    res
+      .status(500)
+      .json({ message: "An error occurred, please try again later." });
   }
 });
 

@@ -1,29 +1,30 @@
-<div class="container">
+<div>
   <h1>The Tech Blog</h1>
-
-  <section class="card">
-    <div>
-      <h2>{{blog.title}}</h2>
-      <p>Posted by {{blog.user.username}} on {{format_date date_created}}</p>
-    </div>
-    <div><p>{{blog.content}}</p></div>
-  </section>
-
-  {{#each comments as |comment|}}
-    <section class="card">
-      <p>{{comment.comment_content}}</p>
-      <p>—{{comment.user.username}}, {{format_date date_created}}</p>
-    </section>
-  {{/each}}
-
-  <section class="card">
-    <form action="#" method="post" id="comment-form">
-      <div class="form-group">
-        <label for="comment">Comment</label>
-        <textarea id="comment-content" name="comment" required></textarea>
-      </div>
-      <button type="submit" id="comment-button">Submit</button>
-    </form>
-  </section>
-
 </div>
+
+<section class="card">
+  <div>
+    <h2>{{title}}</h2>
+    <h3>Posted by {{user.username}} on {{format_date date_created}}<h3>
+  </div>
+  <div>
+    <p>{{content}}</p>
+  </div>
+</section>
+
+{{#each comments as |comment|}}
+  <section class="card">
+    <p>{{comment.comment_content}}</p>
+    <p>—{{comment.user.username}}, {{format_date date_created}}</p>
+  </section>
+{{/each}}
+
+<section class="card">
+  <form action="#" method="post" id="comment-form">
+    <div class="form-group">
+      <label for="comment">Comment</label>
+      <textarea id="comment-content" name="comment" required></textarea>
+    </div>
+    <button type="submit" id="comment-button">Submit</button>
+  </form>
+</section>
