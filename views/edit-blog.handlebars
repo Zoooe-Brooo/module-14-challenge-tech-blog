@@ -7,21 +7,17 @@
   <form id="edit-form">
     <div class="form-group">
       <label for="title">Title</label><br />
-      <textarea type="text" id="edit-title" name="title">
-        {{blog.title}}
-      </textarea><br />
+      <textarea type="text" id="edit-title" name="title">{{title}}</textarea><br />
     </div>
 
     <div class="form-group">
       <label for="content">Content</label><br />
-      <textarea id="edit-content" name="content" rows="4">
-        {{blog.content}}
-      </textarea><br />
+      <textarea id="edit-content" name="content" rows="4">{{content}}</textarea><br />
     </div>
 
     <div class="button-container">
-      <button type="submit" id="update-button">Update Post</button>
-      <button type="button" id="delete-button">Delete</button>
+      <button type="button" id="update-button">Update Post</button>
+      <button type="button" id="delete-button" data-userid="{{user_id}}">Delete</button>
     </div>
   </form>
 </div>

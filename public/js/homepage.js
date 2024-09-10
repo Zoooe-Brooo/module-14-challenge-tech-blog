@@ -82,6 +82,20 @@ fetch("/api/blogs")
     console.error("Error:", error);
   });
 
+// window.onload = () => {
+//   if (document.cookie) {
+//     login.textContent = "Dashboard";
+//     login.id = "dashboard";
+//     login.href = "/user/:id";
+//     logout.style.display = "block";
+//   } else {
+//     login.textContent = "Login";
+//     login.id = "login";
+//     login.href = "/login";
+//     logout.style.display = "none";
+//   }
+// };
+
 clickHome();
 clickDashboard();
 clickLogin();

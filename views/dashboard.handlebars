@@ -4,7 +4,7 @@
 
 {{#each blogs as |blog|}}
   <div class="card">
-    <a href="/blog/{{blog.id}}" class="blog-item">
+    <a href="/user/blog/{{blog.id}}" class="blog-item" data-id="{{blog.id}}">
       <p>{{blog.title}}</p>
       <p>{{format_date blog.date_created}}</p>
     </a>
