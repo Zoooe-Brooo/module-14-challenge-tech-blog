@@ -5,9 +5,6 @@ const updateButton = document.querySelector("#update-button");
 const deleteButton = document.querySelector("#delete-button");
 
 const blogId = document.location.pathname.split("/")[3];
-const userId = document
-  .getElementById("delete-button")
-  .getAttribute("data-userid");
 
 const editFormHandler = async (event) => {
   event.preventDefault();
@@ -23,7 +20,7 @@ const editFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace(`/user/${userId}`);
+      document.location.replace(`/dashboard`);
     } else {
       alert("Failed to update post.");
     }
@@ -39,7 +36,7 @@ const deleteFormHandler = async (event) => {
   });
 
   if (response.ok) {
-    document.location.replace(`/user/${userId}`);
+    document.location.replace(`/dashboard`);
   } else {
     alert("Failed to delete post.");
   }

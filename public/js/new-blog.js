@@ -17,7 +17,7 @@ const newPostFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace(`/user/${user_id}`);
+      document.location.replace(`/dashboard`);
     } else {
       alert("Failed to create post.");
     }

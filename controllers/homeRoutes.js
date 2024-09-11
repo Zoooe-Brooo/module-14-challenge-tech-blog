@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/user/" + req.session.user_id);
+    res.redirect("/dashboard");
     return;
   }
 
@@ -44,10 +44,10 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-router.get("/user/:id", withAuth, async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.params.id, {
-      include: [{ model: Blog }],
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [{ model: Blog, order: [["date_created", "ASC"]] }],
     });
 
     if (!userData) {
@@ -66,15 +66,15 @@ router.get("/user/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/user/:id/newblog", withAuth, async (req, res) => {
-  try {
-    res.render("new-blog", {
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    console.error("Failed to render new blog page:", err);
-    res.status(500).json({ message: "Failed to load new blog page." });
-  }
+router.get("/newblog", withAuth, async (req, res) => {
+  console.log("new blog route hit");
+  res.render("new-blog", {
+    logged_in: req.session.logged_in,
+  });
+  // } catch (err) {
+  //   console.error("Failed to render new blog page:", err);
+  //   res.status(500).json({ message: "Failed to load new blog page." });
+  // }
 });
 
 router.get("/user/blog/:id", withAuth, async (req, res) => {
@@ -121,6 +121,7 @@ router.get("/blog/:id", async (req, res) => {
 
     res.render("blog", {
       ...blog,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);

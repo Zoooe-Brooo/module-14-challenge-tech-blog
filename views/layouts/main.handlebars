@@ -10,11 +10,7 @@
       <nav>
         <ul>
           <li><a href="/" id="home">Home</a></li>
-          {{#if logged_in}}
-            <li><a href="/user/{{user_id}}" id="dashboard">Dashboard</a></li>
-          {{else}}
-            <li><a href="/login" id="dashboard">Dashboard</a></li>
-          {{/if}}
+          <li><a href="/login" id="dashboard">Dashboard</a></li>
           {{#if logged_in}}
             <li><a href="/" id="logout">Logout</a></li>
           {{else}}
@@ -28,12 +24,6 @@
       {{{body}}}
     </main>
 
-    <script src="/js/homepage.js"></script>
-    <script src="/js/login.js"></script>
-    <script src="/js/signup.js"></script>
-    <script src="/js/blog.js"></script>
-    <script src="/js/dashboard.js"></script>
-    <script src="/js/new-blog.js"></script>
-    <script src="/js/edit-blog.js"></script>
+    <script src="/js/main.js"></script>
   </body>
 </html>

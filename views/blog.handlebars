@@ -19,7 +19,8 @@
   </section>
 {{/each}}
 
-<section class="card">
+{{#if logged_in}}
+  <section class="card">
   <form action="#" method="post" id="comment-form">
     <div class="form-group">
       <label for="comment-content">Comment</label>
@@ -28,3 +29,7 @@
     <button type="submit" id="comment-button">Submit</button>
   </form>
 </section>
+{{/if}}
+
+
+<script src="/js/blog.js"></script>

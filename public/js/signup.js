@@ -20,7 +20,7 @@ const signupFormHandler = async (event) => {
 
       if (response.ok) {
         const user = await response.json();
-        document.location.replace("/user/" + user.user.id);
+        document.location.replace("/dashboard");
       } else {
         const errorMessage = await response.json();
         alert(
