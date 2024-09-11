@@ -1,45 +1,62 @@
-const home = document.querySelector("#home");
-const dashboard = document.querySelector("#dashboard");
-const login = document.querySelector("#login");
-const logout = document.querySelector("#logout");
+const homeEl = document.querySelector("#home");
+const dashboardEl = document.querySelector("#dashboard");
+const loginEl = document.querySelector("#login");
+const logoutEl = document.querySelector("#logout");
 
 function clickHome() {
-  home.addEventListener("click", () => {
+  homeEl.addEventListener("click", () => {
     window.location.replace("/");
   });
 }
 
 function clickDashboard() {
-  dashboard.addEventListener("click", () => {
-    if (document.cookie) {
-      window.location.replace("/user/:id");
-    } else {
-      window.location.replace("/login");
-    }
-  });
+  if (dashboardEl) {
+    dashboardEl.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const userId = dashboardEl.getAttribute("href").split("/").pop();
+
+      if (userId) {
+        window.location.replace(`/user/${userId}`);
+      } else {
+        window.location.replace("/login");
+      }
+    });
+  }
 }
 
 function clickLogin() {
-  login.addEventListener("click", () => {
-    if (document.cookie) {
-      window.location.replace("/user/:id");
-    } else {
+  if (loginEl) {
+    loginEl.addEventListener("click", (event) => {
+      event.preventDefault();
+
       window.location.replace("/login");
-    }
-  });
+    });
+  }
 }
 
 function clickLogout() {
-  logout.addEventListener("click", () => {
-    document.cookie = false;
-    window.location.replace("/");
-  });
+  if (logoutEl) {
+    logoutEl.addEventListener("click", async (event) => {
+      event.preventDefault();
+
+      const response = await fetch("/api/user/logout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (response.ok) {
+        window.location.replace("/");
+      } else {
+        alert("Failed to log out.");
+      }
+    });
+  }
 }
 
 fetch("/api/blogs")
   .then((response) => response.json())
   .then((data) => {
-    // Render the blogs on the homepage
     const blogs = data;
     const blogContainer = document.querySelector(".container");
 
@@ -81,20 +98,6 @@ fetch("/api/blogs")
   .catch((error) => {
     console.error("Error:", error);
   });
-
-// window.onload = () => {
-//   if (document.cookie) {
-//     login.textContent = "Dashboard";
-//     login.id = "dashboard";
-//     login.href = "/user/:id";
-//     logout.style.display = "block";
-//   } else {
-//     login.textContent = "Login";
-//     login.id = "login";
-//     login.href = "/login";
-//     logout.style.display = "none";
-//   }
-// };
 
 clickHome();
 clickDashboard();

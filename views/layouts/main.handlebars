@@ -10,8 +10,12 @@
       <nav>
         <ul>
           <li><a href="/" id="home">Home</a></li>
-          <li><a href="/user/:id" id="dashboard">Dashboard</a></li>
-          {{#if loggedIn}}
+          {{#if logged_in}}
+            <li><a href="/user/{{user_id}}" id="dashboard">Dashboard</a></li>
+          {{else}}
+            <li><a href="/login" id="dashboard">Dashboard</a></li>
+          {{/if}}
+          {{#if logged_in}}
             <li><a href="/" id="logout">Logout</a></li>
           {{else}}
             <li><a href="/login" id="login">Login</a></li>

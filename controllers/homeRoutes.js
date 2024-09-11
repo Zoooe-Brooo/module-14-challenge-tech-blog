@@ -17,6 +17,8 @@ router.get("/", async (req, res) => {
 
     res.render("homepage", {
       blogs,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -48,6 +50,11 @@ router.get("/user/:id", withAuth, async (req, res) => {
       include: [{ model: Blog }],
     });
 
+    if (!userData) {
+      res.status(404).json({ message: "User not found." });
+      return;
+    }
+
     const user = userData.get({ plain: true });
 
     res.render("dashboard", {
@@ -60,9 +67,14 @@ router.get("/user/:id", withAuth, async (req, res) => {
 });
 
 router.get("/user/:id/newblog", withAuth, async (req, res) => {
-  res.render("new-blog", {
-    logged_in: req.session.logged_in,
-  });
+  try {
+    res.render("new-blog", {
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.error("Failed to render new blog page:", err);
+    res.status(500).json({ message: "Failed to load new blog page." });
+  }
 });
 
 router.get("/user/blog/:id", withAuth, async (req, res) => {
@@ -104,6 +116,8 @@ router.get("/blog/:id", async (req, res) => {
     });
 
     const blog = blogData.get({ plain: true });
+
+    console.log(blog);
 
     res.render("blog", {
       ...blog,

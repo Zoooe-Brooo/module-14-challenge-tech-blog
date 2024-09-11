@@ -2,6 +2,10 @@
   <h1>Your Dashboard</h1>
 </div>
 
+<div>
+  <button id="new-post">+ New Post</button>
+</div>
+
 {{#each blogs as |blog|}}
   <div class="card">
     <a href="/user/blog/{{blog.id}}" class="blog-item" data-id="{{blog.id}}">
@@ -10,7 +14,3 @@
     </a>
   </div>
 {{/each}}
-
-<div>
-  <button id="new-post">+ New Post</button>
-</div>

@@ -11,18 +11,27 @@ const signupFormHandler = async (event) => {
   const password = signupPassword.value.trim();
 
   if (username && password) {
-    const response = await fetch("/api/users/signup", {
-      method: "POST",
-      body: JSON.stringify({ username, password }),
-      headers: { "Content-Type": "application/json" },
-    });
+    try {
+      const response = await fetch("/api/user/signup", {
+        method: "POST",
+        body: JSON.stringify({ username, password }),
+        headers: { "Content-Type": "application/json" },
+      });
 
-    if (response.ok) {
-      const user_id = response.user_id;
-      document.location.replace("/user/" + user_id);
-    } else {
-      alert("Failed to sign up.");
+      if (response.ok) {
+        const user = await response.json();
+        document.location.replace("/user/" + user.user.id);
+      } else {
+        const errorMessage = await response.json();
+        alert(
+          "Failed to sign up: " + (errorMessage.message || "Unknown error.")
+        );
+      }
+    } catch (err) {
+      alert("An error occurred: " + err.message);
     }
+  } else {
+    alert("Please enter a username and password.");
   }
 };
 

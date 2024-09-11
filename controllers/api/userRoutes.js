@@ -4,16 +4,24 @@ const withAuth = require("../../utils/auth");
 
 router.post("/signup", async (req, res) => {
   try {
+    if (!req.body.username || !req.body.password) {
+      res.status(400).json({ message: "Username and password are required." });
+      return;
+    }
+
     const newUser = await User.create(req.body);
 
     req.session.save(() => {
       req.session.user_id = newUser.id;
       req.session.logged_in = true;
 
-      res.status(200).json(newUser);
+      res.status(200).json({
+        user: { id: newUser.id, username: newUser.username },
+        message: "You are now logged in!",
+      });
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({ error: err.message || "Failed to sign up." });
   }
 });
 
@@ -39,7 +47,7 @@ router.post("/login", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.json({
+      res.status(200).json({
         user: { id: userData.id, username: userData.username },
         message: "You are now logged in!",
       });
@@ -53,13 +61,16 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/logout", withAuth, async (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.render("homepage");
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
+  try {
+    if (req.session.logged_in) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.status(500).json({ message: "Failed to log out." });
   }
 });
 
