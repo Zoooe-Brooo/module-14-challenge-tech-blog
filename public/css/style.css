@@ -13,10 +13,20 @@ header {
   align-items: center;
 }
 
+header nav ul {
+  list-style: none;
+  margin: 0 20px;
+  padding: 0;
+}
+
+header nav ul li {
+  display: block;
+}
+
 header nav a {
   color: #e8e8e4;
-  margin: 0 15px;
-  padding: 0;
+  margin: 0;
+  padding: 3px;
   text-decoration: none;
   display: inline-block;
 }
@@ -119,7 +129,7 @@ button:hover {
   text-decoration: underline;
 }
 
-.new-post-button {
+#new-post {
   background-color: #555;
   color: #fff;
   padding: 10px 20px;
@@ -127,4 +137,8 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
